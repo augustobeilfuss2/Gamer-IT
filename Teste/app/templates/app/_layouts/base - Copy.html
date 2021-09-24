@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+
+      <meta charset="iso-8859-1">
+      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <!-- Title -->
+    <title>
+      {% block title %}Sistema de Gerenciamento da Gameficacao TI{% endblock %}
+    </title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'app/img/favicon.png' %}" type="image/png">
+
+    <!-- Arquivos CSS -->
+    <link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/master.css' %}">
+
+    <!-- Bloco de Estilos -->
+    {% block styles %}{% endblock %}
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'app:index' %}">
+          <img src="{% static 'app/img/favicon.png' %}" height='45'>
+        </a>
+        <button class="navbar-toggler" type="button" 
+            data-toggle="collapse" data-target="#conteudo-navbar" 
+            aria-controls="conteudo-navbar" aria-expanded="false" 
+            aria-label="Ativar navegacao">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="conteudo-navbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'app:index' %}">
+                      Inicio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app:lista_player' %}">
+                      Players
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'app:cadastra_curso' %}">
+                      Cursos
+                    </a>
+                </li>
+            </ul>           
+        </div>
+    </nav>
+      
+    <!-- Bloco de contedo -->
+    {% block conteudo %}{% endblock %}
+
+    <!-- Arquivos necessarios para o Bootstrap -->
+    <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
+    <script src="{% static 'app/scripts/bootstrap.min.js' %}"></script>
+
+    <!-- Bloco de scripts -->
+    {% block scripts %}{% endblock %}
+
+    <!-- Scripts.js -->
+    <script src="{% static 'app/scripts/scripts.js' %}"></script>
+  </body>
+</html>

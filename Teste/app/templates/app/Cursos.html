@@ -1,0 +1,84 @@
+{% extends "app/_layouts/base.html" %}
+
+{% block title %}Lista de Cursos{% endblock %}
+
+{% block conteudo %}
+<div class="container-fluid ">
+     <div class="row">
+           
+               <div class="card border-info mb-3" style="width: 180rem;height: 6rem">
+        <div class="card-body">
+         
+             <a href="{% url 'app:cadastra_curso' %}"
+                    class="btn btn-primary btn-lg btn-block btn-info">
+                     <samp>Cadastro de Cursos</samp>
+             </a>
+         
+        </div>
+      </div>
+            </div>
+        </div>
+    
+<div class="container-fluid ">
+  <div class="row">
+   
+
+          {% if Cursos|length > 0 %}
+            <p class="card-text">
+           <div class="table-responsive table-hover table-sm table table-striped">
+            <table class="table">
+              <thead class="thead-light">
+              <tr>
+                <th>Curso</th>
+                <th class="text-center">Graduacao</th>
+                <th>Materias</th>
+                <th>Player</th>
+                <th class="text-center" >Horas</th>
+                <th class="text-center">Workshop</th>
+                <th class="text-center">Implementacao</th>
+                <th class="text-center">Comunik</th>
+                <th class="table-info text-center">Opcoes</th>
+              </tr>
+              </thead>
+
+              <tbody>
+              {% for Cursos in Cursos%}
+                <tr>
+                  <td>{{ Cursos.nmCurso }}</td>
+                  <td class="text-center">{{ Cursos.acFaculdade }}</td>
+                  <td>{{ Cursos.nuMaterias }}</td>
+                  <td>{{ Cursos.nmPlayer }}</td>
+                  <td class="text-center" >{{ Cursos.nuHoras }}</td>
+                  <td class="text-center">{{ Cursos.acWorkshop }}</td>
+                  <td class="text-center">{{ Cursos.acImplementacao }}</td>
+                  <td class="text-center">{{ Cursos.acComunik }}</td>
+                  <td class="table-info text-center">
+                    
+
+                    <a href="{% url 'app:update_curso' pk=Cursos.id %}"
+                       class="btn btn-info">
+                      Atualizar
+                    </a>
+                    <a href="{% url 'app:delete_curso' pk=Cursos.id %}"
+                      class="btn btn-outline-danger">
+                        Excluir
+                    </a>
+                  <td>
+                 
+                  
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+        {% else %}
+          <div class="text-center mt-5 mb-5 jumbotron">
+            <h5>Nenhum <code>Cursos</code> cadastrado ainda.</h5>
+          </div>
+        {% endif %}
+          <hr />
+          
+        </div>
+       </div>
+      </div>
+  
+{% endblock %}

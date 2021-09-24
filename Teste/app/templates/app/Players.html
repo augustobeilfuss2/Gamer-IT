@@ -1,0 +1,76 @@
+{% extends "app/_layouts/base.html" %}
+
+{% block title %}Lista de Players{% endblock %}
+
+{% block conteudo %}
+<div class="container-fluid ">
+     <div class="row">
+           
+               <div class="card border-info mb-3" style="width: 180rem;height: 6rem">
+        <div class="card-body">
+         
+             <a href="{% url 'app:cadastra_player' %}"
+                    class="btn btn-primary btn-lg btn-block btn-info">
+                     <samp>Cadastro de Players</samp>
+             </a>
+         
+        </div>
+      </div>
+            </div>
+        </div>
+    
+<div class="container-fluid ">
+  <div class="row">
+   
+
+          {% if Players|length > 0 %}
+            <p class="card-text">
+           <div class="table-responsive table-hover table-sm table table-striped">
+            <table class="table">
+              <thead class="thead-light">
+              <tr>
+                <th>Player</th>
+                <th>Link Imagem</th>
+                <th class="text-center" >Setor</th>
+                 <th class="table-info text-center">Opcoes</th>
+              </tr>
+              </thead>
+
+              <tbody>
+              {% for Players in Players%}
+                <tr>
+                  <td>{{ Players.nmcolaborador}}</td>
+                  <td>{{ Players.imcolaborador}}</td>
+                  <td class="text-center" >{{ Players.nmSetor }}</td>
+
+                  <td class="table-info text-center">
+                    
+
+                    <a href="{% url 'app:update_player' pk=Players.id %}"
+                       class="btn btn-info">
+                      Atualizar
+                    </a>
+                    <a href="{% url 'app:delete_player' pk=Players.id %}"
+                      class="btn btn-outline-danger">
+                        Excluir
+                    </a>
+                  <td>
+                 
+                  
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+        {% else %}
+          <div class="text-center mt-5 mb-5 jumbotron">
+            <h5>Nenhum <code>Player</code> cadastrado ainda.</h5>
+          </div>
+        {% endif %}
+          <hr />
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

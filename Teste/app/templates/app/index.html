@@ -1,0 +1,51 @@
+<!-- Estendemos do template base -->
+{% extends "app/_layouts/base.html" %}
+
+<!-- Bloco que define o <title></title> da nossa pagina -->
+{% block title %}Inicio{% endblock %}
+
+<!-- Bloco de conteúdo da nossa pagina -->    
+{% block conteudo %}
+<div class="container">
+  <div class="row">
+    <div class="col order-first">
+      <div class="card  text-center" style="width: 30rem;height: 6rem">
+        <div class="card-body">
+         
+             <a href="{% url 'app:lista_curso' %}"
+             class="btn btn-primary btn-lg btn-block btn-info">
+            <samp>Lista de Cursos</samp>
+          </a>
+          <p class="card-text-center">
+           <samp> Lista de</samp> <code>cursos</code> <samp>ja cadastrados.</samp>
+          </p>
+         
+        </div>
+      </div>
+    </div>
+      <div class="col order-last">
+      <div class="card text-center" style="width: 30rem;height: 6rem">
+        <div class="card-body">
+         
+             <a href="{% url 'app:lista_player' %}"
+             class="btn btn-primary btn-lg btn-block btn-info">
+            <samp>Lista de Players</samp>
+          </a>
+          <p class="card-text-center text-center">
+           <samp> Lista de</samp> <code>players</code> <samp>ja cadastrados.</samp>
+          </p>
+         
+        </div>
+      </div>
+    </div>
+   </div> 
+  </div>
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <iframe width="1570" height="773" src="https://app.powerbi.com/reportEmbed?reportId=65fe1e7b-6a02-4fee-a5b0-1ea9dcda0fee&autoAuth=true&ctid=74f4d89d-d0f4-4a1f-b65f-afb854141b49&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLWJyYXppbC1zb3V0aC1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+    </div>
+
+</div>
+    </div>
+{% endblock %}
