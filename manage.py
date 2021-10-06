@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+un#!/usr/bin/env python
 """
 Command-line utility for administrative tasks.
 

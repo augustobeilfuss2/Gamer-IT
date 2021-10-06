@@ -113,6 +113,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Interpreter Include="env12\">
+      <Id>env12</Id>
+      <Version>3.7</Version>
+      <Description>env12 (Python 3.7 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
     <Interpreter Include="env\">
       <Id>env</Id>
       <Version>3.9</Version>

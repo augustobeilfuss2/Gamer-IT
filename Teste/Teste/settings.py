@@ -26,7 +26,7 @@ SECRET_KEY = '336db3e8-fe46-4ad8-aff8-d6d320843dc4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://gamerit.azurewebsites.net','https://gamerit.scm.azurewebsites.net']
 
 # Application references
 # https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-INSTALLED_APPS
@@ -77,16 +77,36 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Teste.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-DATABASES = {
+if os.getenv('GAE_APPLICATION', None):
+    # Running on production App Engine, so connect to Google Cloud SQL using
+    # the unix socket at /cloudsql/<your-cloudsql-connection string>
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'HOST': 'django-327320:southamerica-east1:postgre-clone',
+            'USER': 'postgres',
+            'PASSWORD': 'Kepler12',
+            'NAME': 'gamerIT',
+        }
+    }
+else:
+    # Running locally so connect to either a local MySQL instance or connect 
+    # to Cloud SQL via the proxy.  To start the proxy via command line: 
+    #    $ cloud_sql_proxy -instances=[INSTANCE_CONNECTION_NAME]=tcp:3306 
+    # See https://cloud.google.com/sql/docs/mysql-connect-proxy
+
+# Database
+# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+    DATABASES = {   
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'GamerIT',
+        'NAME': 'gamerIT',
         'USER': 'postgres',
-        'PASSWORD': 'Kepler@123',
-        'HOST': '127.0.0.1',
+        'PASSWORD': 'Kepler12',
+        'HOST': '34.95.196.102',
         'PORT': '5432',
     }
-}
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
